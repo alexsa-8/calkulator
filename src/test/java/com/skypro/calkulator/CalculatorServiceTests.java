@@ -46,6 +46,7 @@ public class CalculatorServiceTests {
         Assertions.assertEquals(result,calculatorService.divide(num1, num2));
     }
 
+
     @Test
     public void plusWithFirstNumberNullException(){
         assertThrows(IllegalArgumentException.class, () -> calculatorService.plus(null, 1));
