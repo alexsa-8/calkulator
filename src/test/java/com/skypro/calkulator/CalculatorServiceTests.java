@@ -6,9 +6,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.NullSource;
 import java.util.stream.Stream;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class CalculatorServiceTests {
     public final CalculatorService calculatorService=new CalculatorService();
@@ -46,38 +50,54 @@ public class CalculatorServiceTests {
         Assertions.assertEquals(result,calculatorService.divide(num1, num2));
     }
 
+    @Test
+    @NullSource
+    @EmptySource
+    public void plusWithFirstNumberNullException(){
+        assertNotNull(IllegalArgumentException.class, () -> String.valueOf(calculatorService.plus(null, 1)));
+    }
 
     @Test
-    public void plusWithFirstNumberNullException(){
-        assertThrows(IllegalArgumentException.class, () -> calculatorService.plus(null, 1));
-    }
-    @Test
+    @NullSource
+    @EmptySource
     public void plusWithSecondNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.plus(2,null));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.plus(2,null)));
     }
     @Test
+    @NullSource
+    @EmptySource
     public void minusWithFirstNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.minus(null,3));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.minus(null,3)));
     }
     @Test
+    @NullSource
+    @EmptySource
     public void minusWithSecondNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.minus(4,null));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.minus(4,null)));
     }
     @Test
+    @NullSource
+    @EmptySource
     public void multiplyWithFirstNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.multiply(null,5));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.multiply(null,5)));
     }
     @Test
+    @NullSource
+    @EmptySource
     public void multiplyWithSecondNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.multiply(6,null));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.multiply(6,null)));
     }
     @Test
+    @NullSource
+    @EmptySource
     public void divideWithFirstNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.divide(null,7));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.divide(null,7)));
     }
     @Test
+    @NullSource
+    @EmptySource
     public void divideWithSecondNumberNullException(){
-        assertThrows(IllegalArgumentException.class, ()-> calculatorService.divide(8,null));
+        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.divide(8, null)));
     }
     @Test
     public void divisionByZeroException(){
