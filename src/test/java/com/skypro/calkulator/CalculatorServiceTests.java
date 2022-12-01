@@ -1,16 +1,12 @@
 package com.skypro.calkulator;
 
-import com.skypro.calkulator.exception.IllegalNumberException;
 import com.skypro.calkulator.service.CalculatorService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.EmptySource;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.NullSource;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -49,60 +45,45 @@ public class CalculatorServiceTests {
     public void comparisonDivideTest(Integer num1, Integer num2, Integer result){
         Assertions.assertEquals(result,calculatorService.divide(num1, num2));
     }
-
     @Test
-    @NullSource
-    @EmptySource
     public void plusWithFirstNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, () -> String.valueOf(calculatorService.plus(null, 1)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, () -> calculatorService.divide(null, 1),"Параметр не заполнен");
     }
 
     @Test
-    @NullSource
-    @EmptySource
     public void plusWithSecondNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.plus(2,null)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.plus(2,null),"Параметр не заполнен");
     }
     @Test
-    @NullSource
-    @EmptySource
     public void minusWithFirstNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.minus(null,3)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.minus(null,3),"Параметр не заполнен");
     }
     @Test
-    @NullSource
-    @EmptySource
     public void minusWithSecondNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.minus(4,null)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.minus(4,null),"Параметр не заполнен");
     }
     @Test
-    @NullSource
-    @EmptySource
     public void multiplyWithFirstNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.multiply(null,5)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.multiply(null,5),"Параметр не заполнен");
     }
     @Test
-    @NullSource
-    @EmptySource
     public void multiplyWithSecondNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.multiply(6,null)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.multiply(6,null),"Параметр не заполнен");
     }
     @Test
-    @NullSource
-    @EmptySource
     public void divideWithFirstNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.divide(null,7)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.divide(null,7),"Параметр не заполнен");
     }
     @Test
-    @NullSource
-    @EmptySource
     public void divideWithSecondNumberNullException(){
-        assertNotNull(IllegalArgumentException.class, ()-> String.valueOf(calculatorService.divide(8, null)));
+        CalculatorService calculatorService=new CalculatorService();
+        assertThrows(NullPointerException.class, ()-> calculatorService.divide(8, null),"Параметр не заполнен");
     }
-    @Test
-    public void divisionByZeroException(){
-        assertThrows(IllegalNumberException.class, ()-> calculatorService.divide(5,0));
-    }
-
-
 }
